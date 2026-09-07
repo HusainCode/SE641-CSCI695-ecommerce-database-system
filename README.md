@@ -1,16 +1,18 @@
-# E-Commerce Database System
+# E-Commerce Management System
 
-A full-stack e-commerce platform built with React, TypeScript, Java, Spring Boot, and MySQL.
+This repository contains the SE641/CSCI 695 E-Commerce Management System
+project, developed by a team of graduate students in the Master of Science
+in Software Engineering and Master of Science in Computer Science programs
+at St. Cloud State University.
 
-This project is being developed by a team of graduate students as part of the Master of Science in Software Engineering program at St. Cloud State University for SE641 & CSCI 695.
+The system is a full-stack e-commerce platform: a React/TypeScript frontend
+communicating with a Java/Spring Boot REST API backend, backed by a MySQL
+relational database. It is designed to support a product catalog, shopping
+cart, order processing, inventory management, simulated payments, shipment
+tracking, and reporting.
 
-The goal of the project is to design, develop, and deploy a complete e-commerce system while applying full-stack software engineering, REST API development, relational database design, transaction processing, and modern team development practices.
-
-The application follows a layered architecture with a React and TypeScript frontend, a Java and Spring Boot REST API, and a relational MySQL database. The system is designed to support product management, shopping carts, order processing, inventory management, simulated payments, shipment tracking, and reporting.
-
-This repository serves as the central engineering workspace for the project. It contains the application source code, database design, API documentation, architecture diagrams, technical documentation, deployment information, and other development resources.
-
-> **Project Status:** Under active development. Features, documentation, diagrams, and deployment information will be updated as development progresses.
+> **Project Status:** Foundational project structure. Application features
+> are implemented incrementally by the team — see [Project Roadmap](#project-roadmap).
 
 ## Team Members
 
@@ -20,635 +22,413 @@ This repository serves as the central engineering workspace for the project. It 
 - Fairooz Nawar
 - Dinesh Sevet
 
-## Technology Stack
+## Start Here
 
-| Layer / Category | Technology |
-| --- | --- |
-| Frontend / GUI | React 19, TypeScript 5.9 |
-| Backend | Java 21, Spring Boot 3.5.x |
-| Database | MySQL 8.4 LTS |
-| API Layer | REST API |
-| ORM / Persistence | Spring Data JPA, Hibernate 6.x |
-| Build Tool | Maven 3.9.x |
-| Version Control | Git, GitHub |
-| Project Management | Jira |
-| Deployment | Railway |
+This repository is organized as a **monorepo** with separate frontend and
+backend applications.
 
-## System Architecture
+Before adding or modifying code, read the guide for the area you will be
+working on:
 
-The application follows a layered full-stack architecture that separates the frontend, API and business logic, persistence layer, and relational database.
+- **Backend development:** [backend/README.md](backend/README.md)
+  Read this before adding Java/Spring Boot code. It explains the backend
+  architecture, package responsibilities, controllers, services,
+  repositories, entities, DTOs, REST conventions, database rules,
+  testing, and backend coding standards.
 
-```text
-React + TypeScript
-        |
-        | HTTP / REST API
-        v
-Java + Spring Boot
-        |
-        | Controller
-        v
-      Service
-        |
-        v
-    Repository
-        |
-        | Spring Data JPA / Hibernate
-        v
-      MySQL
-```
+- **Frontend development:** [frontend/README.md](frontend/README.md)
+  Read this before adding React/TypeScript code. It explains where to
+  add pages, components, services, hooks, types, utilities, frontend API
+  communication, and frontend coding standards.
 
-### Frontend Layer
+- **Repository structure:** [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)
+  Read this when you need to understand where files and folders belong,
+  or before introducing a new directory.
 
-The frontend is developed using React and TypeScript. It provides the graphical user interface for customers and administrators and communicates with the Spring Boot backend through REST API requests.
+- **Shared coding guidelines:** [docs/CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md)
+  Contains the common coding and naming standards used across the team.
 
-### Backend Layer
+**Do not create random folders or introduce a new project structure
+without first checking the appropriate guide above.**
 
-The backend is developed using Java and Spring Boot. It is responsible for REST API endpoints, application business logic, validation, database operations, and communication between the frontend and persistence layer.
-
-The backend follows a conventional layered architecture:
+### Documentation Map
 
 ```text
-Controller
-    |
-    v
-Service
-    |
-    v
-Repository
-    |
-    v
-MySQL
+README.md                          Project overview, setup, Git workflow, security rules
+  |
+  +-- backend/README.md            How to add backend code
+  |
+  +-- frontend/README.md           How to add frontend code
+  |
+  +-- docs/PROJECT_STRUCTURE.md    Where files/folders belong
+  |
+  +-- docs/CODING_GUIDELINES.md    Shared coding/naming standards
 ```
 
-### Persistence Layer
-
-Spring Data JPA and Hibernate are used to map Java entities to relational database tables and manage persistence between the Spring Boot application and MySQL.
-
-### Database Layer
-
-MySQL provides persistent relational storage for customers, addresses, products, categories, inventory, shopping carts, orders, payments, shipments, and their relationships.
-
-## Core Features
-
-### Customer Features
-
-The customer-facing portion of the application is designed to support common e-commerce workflows.
-
-- Browse available products
-- Search for products
-- Browse products by category
-- Filter products by price
-- Filter products by availability
-- View product details
-- Add products to a shopping cart
-- Update shopping cart quantities
-- Remove products from a shopping cart
-- Place orders
-- View previous orders
-- View order details
-- View order status
-
-### Product Management
-
-The system provides functionality for managing the store's product catalog.
-
-- Create products
-- View products
-- Update product information
-- Delete products
-- Assign products to categories
-- Search products
-- Filter products
-- Manage product availability
-- Associate products with inventory records
-
-### Shopping Cart
-
-The shopping cart connects customers with products before an order is created.
-
-Planned functionality includes:
-
-- Create a customer shopping cart
-- Add products to the cart
-- Update product quantities
-- Remove products from the cart
-- Maintain cart items
-- Calculate information required for order creation
-- Convert cart information into an order
-
-### Order Management
-
-The system supports the complete lifecycle of an order.
-
-- Create customer orders
-- Create associated order items
-- Associate orders with customers
-- Associate products with order items
-- Calculate order totals
-- Store order status
-- Update order status
-- Display customer order history
-- Display individual order details
-- Allow administrators to view and manage orders
-
-## Inventory Management
-
-Inventory is maintained separately from product information so that product data and inventory quantities can be managed independently.
-
-The system is designed to:
-
-- Track available product quantities
-- Update inventory quantities
-- Associate inventory records with products
-- Update inventory when an order is placed
-- Identify low-stock products
-- Provide inventory reports
-- Allow administrators to manage inventory
-
-## Payments
-
-Payment functionality is simulated for this project.
-
-The application will store payment information associated with an order, including:
-
-- Payment record
-- Associated order
-- Payment amount
-- Payment status
-
-The project does not connect to a real payment processor. Sample and synthetically generated payment data are used to model the workflow without storing or processing real financial information.
-
-## Shipping
-
-Shipment functionality is also simulated.
-
-The application is designed to store:
-
-- Shipment records
-- Associated orders
-- Tracking numbers
-- Carrier information
-- Shipment status
-- Shipment dates
-
-This allows the system to model an e-commerce shipping workflow without integrating with an external shipping provider.
-
-## Administration
-
-Administrative functionality provides management capabilities for the e-commerce system.
-
-Administrators will be able to:
-
-- Add products
-- Update products
-- Delete products
-- Manage product categories
-- Manage inventory quantities
-- View orders
-- Update order status
-- Monitor inventory
-- Identify low-stock products
-- Access sales information
-- Access inventory reports
-
-## Reporting
-
-The system includes database queries and reports that demonstrate how stored e-commerce data can be used to provide useful information.
-
-Planned reporting functionality includes:
-
-- Sales totals
-- Inventory reports
-- Low-stock products
-- Best-selling products
-- Orders by status
-- Customer order history
-
-## Database Design
-
-The application uses a relational MySQL database with primary keys and foreign keys to maintain relationships and referential integrity.
-
-### Core Database Entities
-
-| Entity | Purpose |
-| --- | --- |
-| `CUSTOMER` | Stores customer information |
-| `ADDRESS` | Stores customer addresses |
-| `PRODUCT` | Stores product information |
-| `CATEGORY` | Stores product categories |
-| `PRODUCT_CATEGORY` | Creates relationships between products and categories |
-| `INVENTORY` | Tracks product inventory |
-| `CART` | Represents a customer's shopping cart |
-| `CART_ITEM` | Stores products and quantities within a cart |
-| `ORDER` | Stores customer order information |
-| `ORDER_ITEM` | Stores products and quantities associated with an order |
-| `PAYMENT` | Stores simulated payment information |
-| `SHIPMENT` | Stores simulated shipment and tracking information |
-
-## Database Relationships
-
-The database is designed around relationships between the core e-commerce entities.
-
-Examples include:
-
-```text
-CUSTOMER
-   |
-   +---- ADDRESS
-   |
-   +---- CART
-   |       |
-   |       +---- CART_ITEM ---- PRODUCT
-   |
-   +---- ORDER
-            |
-            +---- ORDER_ITEM ---- PRODUCT
-            |
-            +---- PAYMENT
-            |
-            +---- SHIPMENT
-```
-
-Products and categories use a many-to-many relationship:
-
-```text
-PRODUCT
-   |
-   v
-PRODUCT_CATEGORY
-   ^
-   |
-CATEGORY
-```
-
-These relationships allow the application to maintain structured and consistent data across the different parts of the system.
-
-## Database Operations
-
-The application is designed to demonstrate both standard CRUD operations and more advanced relational database functionality.
-
-### CRUD Operations
-
-The system supports operations such as:
-
-- Create new products
-- Read and view products
-- Update product information
-- Delete products
-- Create customer information
-- Update customer information
-- Add shopping cart items
-- Update shopping cart items
-- Remove shopping cart items
-- Create orders
-- Update order status
-- Update inventory quantities
-- Create payment records
-- Create shipment records
-
-### Advanced Database Operations
-
-The application is also designed to perform more advanced operations, including:
-
-- Search products by name
-- Search products by category
-- Filter products by price
-- Filter products by availability
-- Join customers with their orders
-- Join orders with order items
-- Display complete customer order histories
-- Calculate order totals
-- Calculate sales totals
-- Identify low-stock products
-- Determine best-selling products
-- Display orders by status
-- Generate inventory reports
-- Generate sales reports
-- Update inventory when an order is placed
-
-## Order Processing Flow
-
-A typical order moves through several parts of the application.
-
-```text
-Customer
-   |
-   v
-Browse Products
-   |
-   v
-Shopping Cart
-   |
-   v
-Cart Items
-   |
-   v
-Create Order
-   |
-   v
-Create Order Items
-   |
-   v
-Calculate Order Total
-   |
-   v
-Update Inventory
-   |
-   v
-Create Simulated Payment
-   |
-   v
-Create Simulated Shipment
-```
-
-This workflow connects the frontend, backend business logic, and multiple relational database entities.
-
-## REST API
-
-The React frontend communicates with the Spring Boot backend using REST APIs.
-
-The API layer is responsible for exposing application functionality for resources such as:
-
-- Products
-- Categories
-- Customers
-- Addresses
-- Shopping carts
-- Cart items
-- Orders
-- Order items
-- Inventory
-- Payments
-- Shipments
-- Reports
-
-Example resource structure:
-
-```text
-/api/products
-/api/categories
-/api/customers
-/api/carts
-/api/orders
-/api/inventory
-/api/payments
-/api/shipments
-```
-
-The exact endpoint definitions will be documented as the API is implemented.
-
-## Backend Architecture
-
-The Spring Boot backend is organized using a layered architecture.
-
-### Controller Layer
-
-Controllers receive HTTP requests from the frontend and expose REST API endpoints.
-
-### Service Layer
-
-Services contain application and business logic.
-
-Examples include:
-
-- Order processing
-- Inventory updates
-- Shopping cart operations
-- Product management
-- Reporting calculations
-
-### Repository Layer
-
-Repositories provide access to MySQL through Spring Data JPA.
-
-The general request flow is:
-
-```text
-HTTP Request
-     |
-     v
-Controller
-     |
-     v
-Service
-     |
-     v
-Repository
-     |
-     v
-Hibernate / JPA
-     |
-     v
-MySQL
-```
-
-The response travels back through the layers and is returned to the React frontend.
-
-## Frontend
-
-The React and TypeScript frontend provides the user-facing interface for the application.
-
-Planned screens include:
-
-- Product catalog
-- Product search
-- Product details
-- Shopping cart
-- Checkout / order creation
-- Order history
-- Order details
-- Admin product management
-- Admin inventory management
-- Admin order management
-- Sales reports
-- Inventory reports
-
-## Repository Structure
-
-The repository will separate application code and technical documentation.
-
-```text
-ecommerce-database-system/
-|
-├── frontend/
-│   └── React + TypeScript application
-|
-├── backend/
-│   └── Java + Spring Boot application
-|
-├── docs/
-│   ├── architecture/
-│   ├── database/
-│   ├── api/
-│   ├── diagrams/
-│   └── deployment/
-|
-└── README.md
-```
-
-The repository structure may evolve as the application grows.
-
-## Engineering Documentation
-
-Technical documentation will be maintained alongside the source code.
-
-The documentation is planned to include:
-
-- System architecture diagrams
-- ER diagrams
-- Database schema documentation
-- REST API documentation
-- Application flow diagrams
-- Local development instructions
-- Deployment instructions
-- Technical design decisions
-- Testing documentation
-
-This allows the repository to serve as both the source code location and the central technical reference for the system.
-
-## Development Workflow
-
-The team uses Git and GitHub for source control and collaboration.
-
-Development work will be organized using branches so team members can work on different parts of the system independently.
-
-A typical workflow will be:
-
-```text
-Jira Ticket
-     |
-     v
-Development Branch
-     |
-     v
-Implementation
-     |
-     v
-Testing
-     |
-     v
-Pull Request
-     |
-     v
-Review
-     |
-     v
-Merge
-```
-
-This workflow helps organize development and reduce conflicts when multiple team members are working on the application.
-
-## Jira and Agile Development
-
-Jira is used for project management and development tracking.
-
-The team uses Jira to manage:
-
-- Sprints
-- Features
-- Engineering tasks
-- Bug reports
-- Task assignments
-- Development progress
-
-Development follows an Agile sprint-based approach so frontend, backend, database, testing, and documentation work can progress in parallel when appropriate.
-
-## Testing
-
-Testing will be performed throughout development rather than only after implementation is complete.
-
-Testing areas include:
-
-- Database operations
-- REST API behavior
-- Backend business logic
-- Frontend and backend integration
-- CRUD functionality
-- Advanced database queries
-- Order processing
-- Inventory updates
-- Database transactions
-- Application integration
-
-Additional testing documentation will be added as the project develops.
-
-## Deployment
-
-The application is planned to be deployed using Railway.
-
-The deployed environment is expected to include:
+This README covers overall project information, setup, architecture, Git
+workflow, and security rules. It intentionally does not repeat the
+frontend/backend development guides — see the links above for those.
+
+## Architecture
 
 ```text
 React Frontend
       |
-      v
+   REST API
+      |
 Spring Boot Backend
       |
-      v
-MySQL Database
+    MySQL
 ```
 
-Deployment configuration, environment information, and application URLs will be documented once the deployment environment is established.
+The backend follows a conventional layered architecture:
+
+```text
+Controller → Service → Repository → MySQL
+```
+
+## Technology Stack
+
+| Layer / Category | Technology |
+| --- | --- |
+| Frontend | React 19, TypeScript 5.9 |
+| Backend | Java 21, Spring Boot 3.5.x |
+| Database | MySQL 8.4 LTS |
+| API Layer | REST API |
+| ORM / Persistence | Spring Data JPA, Hibernate 6.x |
+| Build Tool (backend) | Maven 3.9.x |
+| Build Tool (frontend) | Vite |
+| Version Control | Git, GitHub |
+| Project Management | Jira |
+| Deployment | Railway |
+
+## Repository Structure
+
+```text
+/
+├── frontend/
+│   ├── README.md               Frontend development guide
+│   └── src/                    React + TypeScript application
+│
+├── backend/
+│   ├── README.md               Backend development guide
+│   ├── Dockerfile              Backend container image
+│   └── src/                    Java + Spring Boot application
+│
+├── docs/
+│   ├── PROJECT_STRUCTURE.md    Repository/folder organization
+│   └── CODING_GUIDELINES.md    Shared coding standards
+│
+├── docker-compose.yml           Runs backend + MySQL together
+├── .env.example                 Docker Compose variable names (no real values)
+├── README.md                    Main project entry point (this file)
+└── .gitignore                   Files that should never be committed
+```
+
+- [`frontend/`](frontend/README.md) — React + TypeScript single-page
+  application. Talks to the backend only through the REST API.
+- [`backend/`](backend/README.md) — Java + Spring Boot REST API and
+  business logic. Owns all database access.
+- [`docs/`](docs/PROJECT_STRUCTURE.md) — Architecture notes, ER diagrams,
+  database documentation, API documentation, and other technical
+  reference material.
+
+## Prerequisites
+
+Recommended (Docker-based) setup:
+
+- [Git](https://git-scm.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Node.js and npm](https://nodejs.org/) (for the React frontend)
+
+If you prefer to run the backend without Docker, you will also need:
+
+- [Java 21 (JDK)](https://adoptium.net/)
+- [Maven 3.9.x](https://maven.apache.org/) (or use the included Maven
+  wrapper `./mvnw` — no local install required)
+- [MySQL 8.4](https://dev.mysql.com/downloads/mysql/) (for local database
+  development)
+
+## Running the Project with Docker
+
+This project uses Docker for the Spring Boot backend and MySQL so team
+members can use a consistent development environment and reduce
+environment/configuration differences. **This is the recommended way for
+the team to run the backend and database.**
+
+The React frontend is not Dockerized — it continues to run locally with
+Node/npm.
+
+### Prerequisites
+
+- [Git](https://git-scm.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Node.js and npm](https://nodejs.org/) (for the frontend)
+
+You do **not** need to install or configure MySQL locally when using the
+Docker setup — the `mysql` container handles that.
+
+### 1. Start Backend + MySQL
+
+From the repository root:
+
+```bash
+docker compose up --build
+```
+
+This starts:
+
+- MySQL 8.4 (with a persistent volume, so data survives restarts)
+- The Spring Boot backend
+
+Backend: `http://localhost:8080`
+
+### 2. Start Frontend
+
+In another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend: `http://localhost:5173`
+
+### 3. Stop Backend + MySQL
+
+From the repository root:
+
+```bash
+docker compose down
+```
+
+This stops and removes the containers. The database data itself is kept
+in a Docker volume and is not lost.
+
+### Configuration
+
+Docker Compose reads `DB_NAME` and `DB_PASSWORD` from your environment
+(or a local `.env` file at the repository root — see
+[.env.example](.env.example)). If unset, safe local-only defaults are
+used. Never commit a real `.env` file or real credentials.
+
+## Getting Started (Without Docker)
+
+You can also run each application directly on your machine instead of
+using Docker. This requires a local MySQL installation. These are the
+basic commands to **run** each application. For instructions on
+**adding or modifying code**, see [backend/README.md](backend/README.md)
+or [frontend/README.md](frontend/README.md).
+
+### Backend (Spring Boot)
+
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+The API starts on `http://localhost:8080` by default.
+
+To run tests:
+
+```bash
+cd backend
+./mvnw test
+```
+
+To build a JAR:
+
+```bash
+cd backend
+./mvnw clean package
+```
+
+Database connection settings are read from environment variables (see
+[backend/src/main/resources/application.properties](backend/src/main/resources/application.properties)):
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `DB_URL` | JDBC URL for MySQL | `jdbc:mysql://localhost:3306/ecommerce_db` |
+| `DB_USERNAME` | Database username | `root` |
+| `DB_PASSWORD` | Database password | *(empty)* |
+| `SERVER_PORT` | Port the API listens on | `8080` |
+
+Do not hardcode real credentials anywhere in the repository. Set these as
+environment variables in your local shell or IDE run configuration.
+
+### Frontend (React + TypeScript)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The app starts on `http://localhost:5173` by default.
+
+Other available commands:
+
+```bash
+npm run build      # type-check and build for production
+npm run lint        # run the linter
+npm run preview     # preview a production build locally
+```
+
+## Team Development Workflow
+
+When starting a new task:
+
+1. Read this README.
+2. Determine whether the task is frontend, backend, database, or
+   documentation work.
+3. Read the appropriate development guide
+   ([backend/README.md](backend/README.md),
+   [frontend/README.md](frontend/README.md), or
+   [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)).
+4. Pull the latest `main` branch.
+5. Create a feature/fix/docs branch.
+6. Add code using the established project structure.
+7. Build/test the affected application.
+8. Push the branch.
+9. Open a Pull Request into `main`.
+
+### Git Branching
+
+**Nobody should develop directly on `main`.**
+
+Before starting new work:
+
+```bash
+git checkout main
+git pull
+```
+
+Create a branch:
+
+```bash
+git checkout -b feature/<feature-name>
+```
+
+Examples:
+
+```text
+feature/product-catalog
+feature/shopping-cart
+feature/order-api
+feature/inventory-management
+```
+
+Bug fixes:
+
+```text
+fix/<description>
+```
+
+Examples:
+
+```text
+fix/cart-total
+fix/product-search
+```
+
+Documentation:
+
+```text
+docs/<description>
+```
+
+Example:
+
+```text
+docs/api-documentation
+```
+
+After making changes:
+
+```bash
+git status
+git add .
+git commit -m "clear description of change"
+git push -u origin <branch-name>
+```
+
+Then open a Pull Request into `main`.
+
+Before merging:
+
+- Make sure the project builds.
+- Review the changed files.
+- Resolve merge conflicts.
+- Have another teammate review the PR when practical.
+
+Do not force-push shared branches unless the team explicitly agrees.
+
+### Commit Message Style
+
+Keep commit messages short and descriptive:
+
+```text
+feat: add product catalog
+feat: add order creation endpoint
+fix: correct inventory update
+docs: update setup instructions
+refactor: simplify product service
+test: add order service tests
+chore: update project configuration
+```
+
+## Security / File Rules
+
+The team must **never** commit:
+
+- Passwords, database credentials, API keys, or other secrets
+- `.env` files containing real secret values
+- `node_modules/`
+- Frontend build output (`frontend/dist/`)
+- Backend build output (`backend/target/`)
+- IDE-specific files (`.idea/`, `.vscode/` local settings)
+- OS temporary files (`.DS_Store`, `Thumbs.db`)
+
+These are already excluded via [.gitignore](.gitignore). If new
+environment variables are introduced, document their **names** in this
+README without including real values.
+
+## Future Database Entities
+
+The application's data model will eventually include:
+
+`CUSTOMER`, `ADDRESS`, `PRODUCT`, `CATEGORY`, `PRODUCT_CATEGORY`,
+`INVENTORY`, `CART`, `CART_ITEM`, `ORDER`, `ORDER_ITEM`, `PAYMENT`,
+`SHIPMENT`
+
+These are **not yet implemented**. The backend is structured (see
+`entity/`, `repository/`) so the team can add them incrementally.
 
 ## Project Roadmap
 
-### Planning and Design
+- **Planning and design** — requirements, database schema, ER diagram,
+  repository structure *(this foundation)*
+- **Database and backend** — MySQL schema, entities, repositories,
+  services, CRUD functionality
+- **Frontend and API integration** — React UI, REST endpoints, product
+  browsing/search
+- **E-commerce functionality** — shopping cart, order processing,
+  inventory updates, simulated payments and shipments, reporting
+- **Testing and improvements** — integration testing, bug fixes, UI
+  polish
+- **Deployment and documentation** — Railway deployment, sample data,
+  final documentation and diagrams
 
-- Define system requirements
-- Design database schema
-- Create ER diagram
-- Establish repository structure
+## Project Management
 
-### Database and Backend
-
-- Create MySQL database
-- Implement database tables and relationships
-- Create Spring Boot backend
-- Implement repositories and services
-- Implement CRUD functionality
-
-### Frontend and API Integration
-
-- Build React interface
-- Implement REST API endpoints
-- Connect React to Spring Boot
-- Implement product browsing and searching
-
-### E-Commerce Functionality
-
-- Implement shopping cart
-- Implement order processing
-- Implement inventory updates
-- Implement simulated payments
-- Implement simulated shipments
-- Implement advanced database queries
-- Implement reporting
-
-### Testing and Improvements
-
-- Test database operations
-- Test frontend/backend integration
-- Test advanced queries
-- Test transactions
-- Fix bugs
-- Improve the user interface
-
-### Deployment and Documentation
-
-- Deploy application
-- Populate database with sample data
-- Complete engineering documentation
-- Complete diagrams
-- Perform final integration testing
+The team uses **Jira** for sprint planning, feature tracking, and bug
+reports, and **GitHub** for source control, branches, and pull requests.
 
 ## Academic Context
 
-This project is being developed as a team class project for **SE641 & CSCI 695** at **St. Cloud State University**, with team members from both the **Master of Science in Software Engineering** and **Master of Science in Computer Science** programs.
-
-Although developed in an academic setting, this repository is structured as an engineering project and serves as a technical record of the team's work, including application development, database engineering, API design, system architecture, testing, deployment, and team collaboration.
-
-## Project Status
-
-**Under active development.**
-
-Source code, diagrams, API documentation, deployment information, and additional engineering documentation will be added and updated as development progresses.
+This project is developed as a team class project for **SE641 & CSCI 695**
+at **St. Cloud State University**. Although developed in an academic
+setting, this repository is structured as an engineering project and
+serves as a technical record of the team's application development,
+database engineering, API design, system architecture, and collaboration.

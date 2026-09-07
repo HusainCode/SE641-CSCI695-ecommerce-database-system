@@ -1,0 +1,45 @@
+# =========================
+# Secrets / environment
+# =========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# =========================
+# Backend (Java / Maven)
+# =========================
+backend/target/
+*.class
+*.jar
+
+# =========================
+# Frontend (Node / Vite)
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# IDE
+# =========================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
+*.iws
+.classpath
+.project
+.settings/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
