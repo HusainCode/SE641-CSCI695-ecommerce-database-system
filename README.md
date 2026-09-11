@@ -9,7 +9,7 @@ The system is a full-stack e-commerce platform: a React/TypeScript frontend
 communicating with a Java/Spring Boot REST API backend, backed by a MySQL
 relational database. It is designed to support a product catalog, shopping
 cart, order processing, inventory management, simulated payments, shipment
-tracking, and reporting.
+tracking, and reporting
 
 > **Project Status:** Foundational project structure. Application features
 > are implemented incrementally by the team — see [Project Roadmap](#project-roadmap).
